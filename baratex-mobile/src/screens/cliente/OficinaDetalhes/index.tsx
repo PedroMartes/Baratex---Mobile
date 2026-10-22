@@ -23,7 +23,10 @@ export const OficinaDetalhesScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
         <View style={styles.bannerHeader}>
           <TouchableOpacity style={styles.headerNav} onPress={() => navigation.goBack()} activeOpacity={0.7}>
             <View style={styles.backButton}>
@@ -67,9 +70,9 @@ export const OficinaDetalhesScreen = () => {
         <Text style={styles.sectionTitle}>Serviços Oferecidos</Text>
 
         {MOCK_SERVICOS.map((servico) => (
-          <TouchableOpacity 
-            key={servico.id} 
-            style={styles.serviceCard} 
+          <TouchableOpacity
+            key={servico.id}
+            style={styles.serviceCard}
             activeOpacity={0.8}
             onPress={() => navigation.navigate('ServicoDetalhes', { servicoId: servico.id, oficinaId })}
           >

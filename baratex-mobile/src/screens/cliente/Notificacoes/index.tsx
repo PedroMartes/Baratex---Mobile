@@ -1,6 +1,7 @@
+import React from 'react';
+import { View, Text, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import { Card } from '../../../components/common/Card';
 import { theme } from '../../../config/theme';
 import { styles } from './styles';
@@ -8,27 +9,21 @@ import { styles } from './styles';
 const MOCK_NOTIFICACOES = [
   {
     id: '1',
-    titulo: 'Agendamento Confirmado! 📅',
-    mensagem: 'Auto Center Silva confirmou seu agendamento para 25/10 às 14:00.',
-    tempo: 'Há 10 min',
-    tipo: 'agendamento',
-    lida: false,
+    titulo: 'Manutenção Registrada!',
+    mensagem: 'Auto Center Silva adicionou um novo registro autenticado para o veículo Onix (ABC1D23).',
+    data: 'Hoje às 14:30',
   },
   {
     id: '2',
-    titulo: 'Manutenção Registrada 🚗',
-    mensagem: 'Troca de pastilhas adicionada com sucesso à sua Garagem Virtual.',
-    tempo: 'Há 2 dias',
-    tipo: 'garagem',
-    lida: true,
+    titulo: 'Lembrete de Agendamento',
+    mensagem: 'Seu agendamento para Troca de Óleo é hoje às 14:00.',
+    data: 'Hoje às 08:00',
   },
   {
     id: '3',
-    titulo: 'Cupom de Desconto 🛠️',
-    mensagem: 'Aproveite 15% OFF em troca de óleo neste fim de semana.',
-    tempo: 'Há 5 dias',
-    tipo: 'promo',
-    lida: true,
+    titulo: 'Alerta da Garagem Virtual',
+    mensagem: 'Já se passaram 6 meses desde a última revisão do seu Chevrolet Onix. Que tal agendar uma verificação?',
+    data: '12/10/2026',
   },
 ];
 
@@ -49,39 +44,15 @@ export const NotificacoesScreen = () => {
           data={MOCK_NOTIFICACOES}
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => {
-            let iconName: keyof typeof Ionicons.glyphMap = 'notifications-outline';
-            let bgIcon = '#EFF6FF';
-            let colorIcon = theme.colors.primary;
-
-            if (item.tipo === 'agendamento') {
-              iconName = 'calendar';
-              bgIcon = '#DCFCE7';
-              colorIcon = theme.colors.success;
-            } else if (item.tipo === 'garagem') {
-              iconName = 'shield-checkmark';
-              bgIcon = '#FEF3C7';
-              colorIcon = theme.colors.warning;
-            }
-
-            return (
-              <Card style={styles.notificationCard}>
-                <View style={[styles.iconBox, { backgroundColor: bgIcon }]}>
-                  <Ionicons name={iconName} size={20} color={colorIcon} />
-                </View>
-                <View style={styles.notificationContent}>
-                  <View style={styles.notifHeader}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                      <Text style={styles.notifTitle}>{item.titulo}</Text>
-                      {!item.lida && <View style={styles.unreadDot} />}
-                    </View>
-                    <Text style={styles.notifTime}>{item.tempo}</Text>
-                  </View>
-                  <Text style={styles.notifMessage}>{item.mensagem}</Text>
-                </View>
-              </Card>
-            );
-          }}
+          renderItem={({ item }) => (
+            <Card style={styles.card}>
+              <View style={styles.notifHeader}>
+                <Text style={styles.notifTitle}>{item.titulo}</Text>
+                <Text style={styles.notifDate}>{item.data}</Text>
+              </View>
+              <Text style={styles.notifBody}>{item.mensagem}</Text>
+            </Card>
+          )}
         />
       </View>
     </SafeAreaView>

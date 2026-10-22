@@ -44,8 +44,10 @@ export const CadastroVeiculoScreen = () => {
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{veiculoEdit ? 'Editar Veículo' : 'Novo Veículo'}</Text>
       </View>
-
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
         <Card style={styles.formCard}>
           <Input label="Marca *" placeholder="Ex: Chevrolet" value={marca} onChangeText={setMarca} />
           <Input label="Modelo *" placeholder="Ex: Onix 1.0 Turbo" value={modelo} onChangeText={setModelo} />

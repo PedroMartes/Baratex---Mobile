@@ -70,7 +70,10 @@ export const HomeScreen = () => {
         />
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.bannerScroll}>
           <View style={styles.promoBanner}>
             <Text style={styles.bannerTitle}>Revisão de Férias 🛠️</Text>

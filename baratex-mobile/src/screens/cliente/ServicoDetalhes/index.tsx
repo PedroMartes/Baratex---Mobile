@@ -25,7 +25,10 @@ export const ServicoDetalhesScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
         <View style={styles.heroImagePlaceholder}>
           <Ionicons name="disc-outline" size={64} color={theme.colors.primary} />
         </View>

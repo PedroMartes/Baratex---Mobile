@@ -11,7 +11,11 @@ import { PerfilNavigator } from './PerfilNavigator';
 
 const Tab = createBottomTabNavigator();
 
-export const TabNavigator = () => {
+interface TabNavigatorProps {
+  onLogout?: () => void;
+}
+
+export const TabNavigator: React.FC<TabNavigatorProps> = ({ onLogout }) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -19,17 +23,30 @@ export const TabNavigator = () => {
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: theme.colors.textSecondary,
         tabBarStyle: {
+          position: 'absolute',
+          bottom: Platform.OS === 'ios' ? 24 : 16,
+          left: 16,
+          right: 16,
           backgroundColor: theme.colors.surface,
-          borderTopColor: theme.colors.border,
-          borderTopWidth: 1,
-          height: Platform.OS === 'ios' ? 90 : 75,
-          paddingTop: 2,
-          paddingBottom: Platform.OS === 'ios' ? 28 : 12,
+          borderRadius: 24,
+          height: 70,
+          borderTopWidth: 0,
+          paddingBottom: 0,
+          paddingTop: 0,
+          // Sombra para iOS
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 6 },
+          shadowOpacity: 0.1,
+          shadowRadius: 10,
+          // Sombra para Android
+          elevation: 8,
+        },
+        tabBarItemStyle: {
+          paddingVertical: 8,
         },
         tabBarLabelStyle: {
           fontSize: 11,
           fontWeight: '600',
-          marginTop: 1,
         },
         tabBarIcon: ({ color }) => {
           let iconName: keyof typeof Ionicons.glyphMap = 'search';
@@ -51,7 +68,9 @@ export const TabNavigator = () => {
       <Tab.Screen name="Busca" component={HomeNavigator} />
       <Tab.Screen name="Garagem" component={GaragemNavigator} />
       <Tab.Screen name="Agendamentos" component={AgendamentosScreen} />
-      <Tab.Screen name="Perfil" component={PerfilNavigator} />
+      <Tab.Screen name="Perfil">
+        {(props) => <PerfilNavigator {...props} onLogout={onLogout} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 };

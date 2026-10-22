@@ -56,11 +56,11 @@ export const GaragemScreen = () => {
         <Text style={styles.subtitle}>
           Selecione um veículo para consultar o histórico de manutenções
         </Text>
-
         <FlatList
           data={MOCK_MEUS_CARROS}
           keyExtractor={(item) => item.id.toString()}
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 100 }} // Espaço extra para a TabBar flutuante
           renderItem={({ item }) => (
             <Card
               style={styles.carCard}

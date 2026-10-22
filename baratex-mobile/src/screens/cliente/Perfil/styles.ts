@@ -14,51 +14,58 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     color: theme.colors.textPrimary,
-    marginBottom: theme.spacing.md,
     marginTop: theme.spacing.sm,
+    marginBottom: theme.spacing.md,
   },
-  profileCard: {
+  userCard: {
+    flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: theme.spacing.lg,
+    padding: theme.spacing.md,
+    marginBottom: theme.spacing.md,
   },
   avatar: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     backgroundColor: theme.colors.primary,
-    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: theme.spacing.sm,
+    justifyContent: 'center',
+    marginRight: theme.spacing.md,
   },
   avatarText: {
-    color: '#FFF',
-    fontSize: 24,
+    color: '#FFFFFF',
+    fontSize: 18,
     fontWeight: 'bold',
   },
-  name: {
-    fontSize: 18,
+  userName: {
+    fontSize: 16,
     fontWeight: 'bold',
     color: theme.colors.textPrimary,
   },
-  email: {
+  userEmail: {
     fontSize: 13,
-    color: theme.colors.textSecondary,
-  },
-  cpf: {
-    fontSize: 12,
     color: theme.colors.textSecondary,
     marginTop: 2,
   },
+  menuCard: {
+    paddingVertical: theme.spacing.xs,
+    paddingHorizontal: theme.spacing.md,
+    marginBottom: theme.spacing.md,
+  },
   menuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: theme.spacing.sm,
+  },
+  menuText: {
+    flex: 1,
     fontSize: 14,
-    paddingVertical: 12,
+    fontWeight: '500',
     color: theme.colors.textPrimary,
+    marginLeft: theme.spacing.sm,
   },
   divider: {
     height: 1,
     backgroundColor: theme.colors.border,
-  },
-  logoutButton: {
-    marginTop: 20,
   },
 });

@@ -71,6 +71,5 @@ export type HomeStackParamList = {
 export type PerfilStackParamList = {
   PerfilHome: undefined;
   MeusVeiculos: undefined;
-  FormasPagamento: undefined;
   Notificacoes: undefined;
 };

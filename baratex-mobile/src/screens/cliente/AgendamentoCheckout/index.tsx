@@ -21,12 +21,11 @@ export const AgendamentoCheckoutScreen = () => {
   const [veiculoSel, setVeiculoSel] = useState(1);
   const [dataSel, setDataSel] = useState('HOJE');
   const [horaSel, setHoraSel] = useState('14:00');
-  const [pagamentoSel, setPagamentoSel] = useState('PIX');
 
   const handleFinalizar = () => {
     Alert.alert(
       'Agendamento Confirmado!',
-      `Serviço: ${servicoNome}\nData/Hora: ${dataSel === 'HOJE' ? 'Hoje' : 'Amanhã'} às ${horaSel}\nPagamento: ${pagamentoSel}`,
+      `Serviço: ${servicoNome}\nData/Hora: ${dataSel === 'HOJE' ? 'Hoje' : 'Amanhã'} às ${horaSel}\nO pagamento será realizado diretamente ao prestador.`,
       [
         {
           text: 'Acompanhar Status',
@@ -45,7 +44,10 @@ export const AgendamentoCheckoutScreen = () => {
         <Text style={styles.headerTitle}>Agendar Serviço</Text>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
         <Card style={styles.card}>
           <Text style={styles.sectionTitle}>Serviço Selecionado</Text>
           <Text style={styles.serviceName}>{servicoNome}</Text>
@@ -98,20 +100,11 @@ export const AgendamentoCheckoutScreen = () => {
           </View>
         </Card>
 
-        <Card style={styles.card}>
-          <Text style={styles.sectionTitle}>Forma de Pagamento</Text>
-          <View style={styles.selectorRow}>
-            {['PIX', 'CARTÃO', 'NO LOCAL'].map((p) => (
-              <TouchableOpacity
-                key={p}
-                style={[styles.optionButton, pagamentoSel === p && styles.optionButtonSelected]}
-                onPress={() => setPagamentoSel(p)}
-              >
-                <Text style={[styles.optionText, pagamentoSel === p && styles.optionTextSelected]}>{p}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </Card>
+        <View style={{ backgroundColor: '#F8FAFC', padding: 12, borderRadius: 8, marginBottom: 16 }}>
+          <Text style={{ fontSize: 12, color: theme.colors.textSecondary, textAlign: 'center' }}>
+            O valor do serviço será acertado diretamente no local do atendimento.
+          </Text>
+        </View>
 
         <Button title="Confirmar Agendamento" variant="primary" style={styles.confirmButton} onPress={handleFinalizar} />
       </ScrollView>

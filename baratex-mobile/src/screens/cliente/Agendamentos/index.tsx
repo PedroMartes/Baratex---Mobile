@@ -118,6 +118,7 @@ export const AgendamentosScreen = () => {
           data={agendamentosFiltrados}
           keyExtractor={(item) => item.id.toString()}
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 100 }} // Espaço extra para a TabBar flutuante
           ListEmptyComponent={
             <View style={styles.emptyBox}>
               <Text style={styles.emptyText}>Nenhum agendamento encontrado nesta categoria.</Text>
